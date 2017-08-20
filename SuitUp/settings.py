@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     # http://whitenoise.evans.io/en/stable/django.html#using-whitenoise-in-development
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
+    'store_products.apps.StoreProductsConfig',
 ]
 
 MIDDLEWARE = [
@@ -109,7 +110,7 @@ USE_L10N = True
 USE_TZ = True
 
 # Change 'default' database configuration with $DATABASE_URL.
-DATABASES['default'] = dj_database_url.config(conn_max_age=500)
+#DATABASES['default'] = dj_database_url.config(conn_max_age=500)
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -120,7 +121,7 @@ ALLOWED_HOSTS = ['*']
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
