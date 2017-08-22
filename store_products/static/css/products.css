@@ -3,7 +3,8 @@
 }
 .foot .footitem {
 	position:absolute;
-	transform:translateY(-50%);
+	/*transform:translateY(-50%);*/
+	top:50%;
 }
 
 .car {
@@ -21,4 +22,18 @@
 .catalog .stock {
 	height:150px;
 	width:50%;
+}
+
+.about {
+	font-family: 'Pacifico', cursive;
+}
+
+.aboutc {
+	position:relative;
+	height:500px;
+}
+.aboutr {
+	position:absolute;
+	transform:translateY(-50%);
+	top:50%;
 }

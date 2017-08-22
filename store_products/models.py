@@ -22,7 +22,7 @@ class Product(models.Model):
 class Customer(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    email = models.CharField(max_length=75)
+    email = models.EmailField()
     password = models.CharField(max_length=30)
 
     def __str__(self):
@@ -38,15 +38,15 @@ class Order(models.Model):
         return str(self.id)
 
 #model for messages and correspondance
-"""class Messages(models.Model):
-    date = models.DateTimeField('date recieved')
-    customer = models.ForeignKey(Customer)
+class Messages(models.Model):
+    date = models.DateTimeField(default=timezone.now())
+    #customer = models.ForeignKey(Customer)
     text =  models.TextField()
-    email = models.CharField(max_length=70)
+    email = models.EmailField()
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
 
 
     def __str__(self):
-        return str(self.id)"""
+        return str(self.id)
 
