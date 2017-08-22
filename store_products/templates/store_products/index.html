@@ -30,11 +30,16 @@
     	</li>
     </ul>
    	<ul class = "nav navbar-nav navbar-right">
-   		<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      	<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+   		<li>{{user}}</li>
+   	   	{% if user.is_anonymous %}
+   		<li><a href="{% url 'register'%}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      	<li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      	{% else %}
       	<li class="dropdown">
           	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <span class="glyphicon glyphicon-shopping-cart"></span>Items<span class="caret"></span></a> 
           	<ul class="dropdown-menu dropdown-cart" role="menu"><!--insert cart items here dynamically--><li class="text-center"><button class="btn-default" id="checkout">Checkout</button></ul></li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+          {% endif %}
   </div>
 </nav>
 	{% block content %}

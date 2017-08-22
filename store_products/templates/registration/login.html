@@ -1,0 +1,22 @@
+{% extends "store_products/index.html" %}
+{% block content %}
+{% if form.errors %}
+<p>Your username and password don't match. PLease try again.</p>
+{% endif %}
+<form method="POST" actions="{% url 'django.contrib.auth.views.login' %}">
+{% csrf_token %}
+<table>
+	<tr>
+		<td>{{form.username.label_tag}}</td>
+		<td>{{form.username}}</td>
+	</tr>
+	<tr>
+		<td>{{form.password.lable_tag}}</td>
+		<td>{{form.password}}</td>
+	</tr>
+</table>
+<input type='submit' value="login" class="btn btn-default" />
+<input type="hidden" name="next" value="{{next}}" />
+</form>
+
+{% endblock %}
