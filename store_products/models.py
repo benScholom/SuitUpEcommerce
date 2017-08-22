@@ -12,6 +12,8 @@ class Product(models.Model):
     type = models.CharField(max_length=15)
     color = models.CharField(max_length=15)
     favorite = models.BooleanField()
+    display_rank = models.IntegerField()
+    image_url = models.CharField(default='images/image', max_length=70)
 
     def __str__(self):
         return self.product_name
@@ -33,5 +35,18 @@ class Order(models.Model):
     product = models.ManyToManyField(Product)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
+
+#model for messages and correspondance
+"""class Messages(models.Model):
+    date = models.DateTimeField('date recieved')
+    customer = models.ForeignKey(Customer)
+    text =  models.TextField()
+    email = models.CharField(max_length=70)
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+
+
+    def __str__(self):
+        return str(self.id)"""
 

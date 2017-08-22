@@ -1,0 +1,57 @@
+{% extends "store_products/index.html" %}
+{% load staticfiles %}
+{% block content %}
+<div class="container-fluid text-center">
+	<h2>Our Collection</h2>
+	<div id='productCarousel' class="carousel slide text-center" data-ride="carousel">
+		<!--<ol class="carousel-indicators">
+			<li data-target="#productCarousel" data-slide-to="0" class="active"></li>
+			<li data-target="#productCarousel" data-slide-to="1"></li>
+			<li data-target="#productCarousel" data-slide-to="2"></li>
+			<li data-target="#productCarousel" data-slide-to="3"></li>
+		</ol>-->
+		<div class="carousel-inner" role="listbox">
+			<div class="item active car">
+				<img class="carimage" alt="suits" src="{% static 'images/suits.jpg' %}"/>
+			</div>
+			<div class="item car">
+				<img class="carimage" alt="shirts" src="{% static 'images/shirts.jpg' %}"/>
+			</div>
+			<div class="item car">
+				<img class="carimage" alt="shoes" src="{% static 'images/shoes.jpg' %}"/>
+			</div>
+			<div class="item car">
+				<img class="carimage" alt="ties" src="{% static 'images/ties.jpg' %}"/>
+			</div>
+		</div>
+		<a class="left carousel-control" href="#productCarousel" role="button" data-slide="prev">
+      		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      		<span class="sr-only">Previous</span>
+    	</a>
+    	<a class="right carousel-control" href="#productCarousel" role="button" data-slide="next">
+      		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      		<span class="sr-only">Next</span>
+      	</a>
+	</div>
+</div>
+<div class="container-fluid text-center">
+	<div class="row">
+	<h2>Top Choices</h2>
+	</div>
+	{% for product in products %}
+	<div class="row">
+		{% for details in product %}
+		<div class="col-xs-3 text-center catalog">
+			<img id="img{{details.id}}" class='stock' src="{% static details.image_url %}" />
+			<p>Name: <span id="name{{details.id}}">{{details.product_name}}</span></p>
+			<p>Style:<span>{{details.style}}</span></p>
+			<p>Price: <span id="price{{details.id}}">${{details.price}}</span>span</p>
+			<p>Type:<span>{{details.type}}</span></p>
+			<p>Color: <span>{{details.color}}</span></p>
+			<button class="btn-default buy" id="{{details.id}}">Buy</button>
+		</div>
+		{% endfor %}
+	</div>
+	{% endfor %}
+</div>
+{% endblock %}

@@ -9,6 +9,57 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	</head>
 	<body>
+	<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <img src="{% static 'images/suitup.png' %}" alt="Suit Up"/>
+      </a>
+    </div>
+    <ul class="nav navbar-nav">
+    	<li><a href="{% url 'home' %}">Home</a></li>
+    	<li><a href='#'>About us</a></li>
+    	<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Collection<span class='caret'></span></a></li>
+    		<ul class="dropdown-menu">
+    			<li><a href="#">Suits</a></li>
+    			<li><a href="#">Shirts</a></li>
+    			<li><a href="#">Shoes</a></li>
+    			<li><a href="#">Ties</a></li>
+    		</ul>
+    </ul>
+   	<ul class = "nav navbar-nav navbar-right">
+   		<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      	<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      	<li class="dropdown">
+          	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <span class="glyphicon glyphicon-shopping-cart"></span>Items<span class="caret"></span></a> 
+          	<ul class="dropdown-menu dropdown-cart" role="menu"><!--insert cart items here dynamically--><li class="text-center"><button class="btn-default" id="checkout">Checkout</button></ul></li>
+  </div>
+</nav>
+	{% block content %}
+	{% endblock %}
+<div class="container-fluid bg-grey">
+	<div class="row">
+		<div class="col-xs-3 foot">
+			<img src="{% static 'images/suitup.png' %}" alt="Suit Up" class="logo footitem"/>
+		</div>
+		<div class="col-xs-3">
+			<a href='#'><p>Shipping</p></a>
+			<a href='#'><p>Returns</p></a>
+			<a href='#'><p>Contact</p></a>
+			<a href='#'><p>About</p></a>
+		</div>
+		<div class ="col-xs-3 foot">
+			<p>Address:</p>
+			<p>filler</p>
+		</div>
+		<div class="col-xs-3 foot">
+			<span class="footitem"><i class="fa fa-instagram"></i></span>
+			<span class='footitem'><i class="fa fa-facebook"></i></span>
+			<span class="footitem"><i class="fa fa-twitter"></i></span>
+			<span class='footitem'><i class="fa fa-pinterest"></i></span>
+		</div>
+	</div>
+</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script src='{% static "js/products.js" %}'></script>

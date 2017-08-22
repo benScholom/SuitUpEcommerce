@@ -1,0 +1,24 @@
+.foot {
+	position:relative;
+}
+.foot .footitem {
+	position:absolute;
+	transform:translateY(-50%);
+}
+
+.car {
+	max-height:350px;
+}
+
+.car .carimage {
+	width:100%;
+}
+
+.catalog {
+	position:relative;
+}
+
+.catalog .stock {
+	height:150px;
+	width:50%;
+}
