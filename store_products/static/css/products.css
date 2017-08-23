@@ -1,10 +1,10 @@
-.foot {
+.container-fluid .row .foot {
 	position:relative;
+	padding-top:50px;
 }
 .foot .footitem {
 	position:absolute;
 	/*transform:translateY(-50%);*/
-	top:50%;
 }
 
 .car {
@@ -37,3 +37,10 @@
 	transform:translateY(-50%);
 	top:50%;
 }
+/*
+.user {
+	bottom:50%;
+}
+.relative {
+	position:relative;
+}*/

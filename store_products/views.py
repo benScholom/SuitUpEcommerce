@@ -36,9 +36,9 @@ def register(request):
             new_user = form.save()
             new_user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password1'],)
             login(request, new_user)
-            return HttpResponseRedirect('/home/')
-        else:
-            form = UserCreationForm()
-            return render(request, "registration/register.html", {'form': form})
+            return HttpResponseRedirect('store_products/home.html')
+    else:
+        form = UserCreationForm()
+    return render(request, "registration/register.html", {'form': form})
 
 #def login(request):
