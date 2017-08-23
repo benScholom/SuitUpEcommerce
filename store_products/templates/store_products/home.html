@@ -48,11 +48,7 @@
 			<p>Price: <span id="price{{details.id}}">${{details.price}}</span></p>
 			<p>Type:<span>{{details.type}}</span></p>
 			<p>Color: <span>{{details.color}}</span></p>
-			{% if user.is_authenticated %}
 			<button class="btn btn-default buy" id="{{details.id}}">Buy</button>
-			{% else %}
-			<h3>Login to buy!</h3>
-			{% endif %}
 		</div>
 		{% endfor %}
 	</div>

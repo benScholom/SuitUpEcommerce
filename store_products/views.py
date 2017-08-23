@@ -1,18 +1,18 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponseRedirect
 from .models import Product
 from .forms import Contactform, Userform
 from django.utils import timezone
-from django.contrib.auth.forms import UserCreationForm
+from django.db.models import Max
 from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 def home(request):
-    favorite_products = []
+    viewed_products = []
     #display rank attribute used to denote which items end up in which row in bootstrap
     for r in Product.objects.values_list('display_rank', flat=True).distinct():
         x = Product.objects.filter(favorite=True, display_rank=r)
-        favorite_products.append(x)
-    return render(request, 'store_products/home.html', {'products': favorite_products})
+        viewed_products.append(x)
+    return render(request, 'store_products/home.html', {'products': viewed_products})
 
 def about(request):
     return render(request, 'store_products/about.html')
@@ -45,5 +45,37 @@ def user_logout(request):
     logout(request)
     return render(request, 'registration/logout.html')
 
+def suits_view(request):
+    return products_serializer(request, 'Suit')
 
-#def login(request):
+
+def shirts_view(request):
+    return products_serializer(request, 'Shirt')
+
+def shoes_view(request):
+    return products_serializer(request, 'Shoes')
+
+def ties_view(request):
+    return products_serializer(request, 'Tie')
+
+def products_serializer(request, type):
+    viewed_products = []
+    product = type
+    product = product.lower()
+    for r in Product.objects.values_list('display_rank', flat=True).distinct():
+        x = Product.objects.filter(type=type, display_rank=r)
+        viewed_products.append(x)
+    return render(request, ('store_products/{0}.html'.format(product)), {'products': viewed_products})
+
+"""def suit_view(request):
+    products_list = []
+    maxid = Product.objects.aggregate(Max('id'))
+    rows = maxid/4
+    for row in range(0,rows):
+        x = []
+        for num in range((4*row),((4*row)+4)):
+            x = Product.objects.filter(type='suit', id=num)
+        products_list.append(x)
+
+
+#def login(request):"""
