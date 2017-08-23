@@ -45,11 +45,11 @@
 			<img id="img{{details.id}}" class='stock' src="{% static details.image_url %}" />
 			<p>Name: <span id="name{{details.id}}">{{details.product_name}}</span></p>
 			<p>Style:<span>{{details.style}}</span></p>
-			<p>Price: <span id="price{{details.id}}">${{details.price}}</span>span</p>
+			<p>Price: <span id="price{{details.id}}">${{details.price}}</span></p>
 			<p>Type:<span>{{details.type}}</span></p>
 			<p>Color: <span>{{details.color}}</span></p>
 			{% if user.is_authenticated %}
-			<button class="btn-default buy" id="{{details.id}}">Buy</button>
+			<button class="btn btn-default buy" id="{{details.id}}">Buy</button>
 			{% else %}
 			<h3>Login to buy!</h3>
 			{% endif %}

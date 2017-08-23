@@ -10,5 +10,6 @@ urlpatterns = [
     url(r'^contact/$', views.contact, name="contact"),
     url(r'^register/$', views.register, name='register'),
     url(r'^login/$', login, name='login'),
-    url(r'^logout/$', logout, name='logout'),
+    url(r'^userlogout/$', views.user_logout, name='userlogout'),
+    #url(r'^logout/$', logout, name='logout'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

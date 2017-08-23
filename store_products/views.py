@@ -1,9 +1,9 @@
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render, redirect
 from .models import Product
-from .forms import Contactform
+from .forms import Contactform, Userform
 from django.utils import timezone
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 def home(request):
@@ -31,14 +31,19 @@ def contact(request):
 
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = Userform(request.POST)
         if form.is_valid():
             new_user = form.save()
             new_user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password1'],)
             login(request, new_user)
-            return HttpResponseRedirect('store_products/home.html')
+            return redirect('home')
     else:
-        form = UserCreationForm()
+        form = Userform()
     return render(request, "registration/register.html", {'form': form})
+
+def user_logout(request):
+    logout(request)
+    return render(request, 'registration/logout.html')
+
 
 #def login(request):

@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 import datetime
 
 # Create your models here.
@@ -19,19 +20,17 @@ class Product(models.Model):
         return self.product_name
 
 #user model with user information
-class Customer(models.Model):
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    email = models.EmailField()
-    password = models.CharField(max_length=30)
+#class Customer(models.Model):
+    #user = models.OneToOneField(User, on_delete=models.CASCADE, default="")
+    #location = models.CharField(max_length=30, default="USA")
 
-    def __str__(self):
-        return u'%s %s' % (self.first_name, self.last_name)
+    #def __str__(self):
+        #return u'%s %s' % (self.user.first_name, self.user.last_name)
 
 #orcers model, links by foreign key with relvant products and customers
 class Order(models.Model):
     date = models.DateTimeField('date ordered')
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    customer = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ManyToManyField(Product)
 
     def __str__(self):
