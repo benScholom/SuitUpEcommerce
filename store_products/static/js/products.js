@@ -3,12 +3,12 @@ showCart();
 var cart = [];
 
 //constructor for creating new cart items - to replace the local storage method
-function cartitem(id, name, price, img_url) {
-	this.id = id;
-	this.name = name;
-	this.price = price;
-	this img_url = img_url;
-}
+//function cartitem(id, name, price, img_url) {
+	//this.id = id;
+	//this.name = name;
+	//this.price = price;
+	//this img_url = img_url;
+//}
 
 //use buy button to get id and add the number to the cart
 $('.buy').on("click", function() {
