@@ -1,6 +1,15 @@
 $(document).ready(function() {
+showCart();
+var cart = [];
 
-var cart = []
+//constructor for creating new cart items - to replace the local storage method
+function cartitem(id, name, price, img_url) {
+	this.id = id;
+	this.name = name;
+	this.price = price;
+	this img_url = img_url;
+}
+
 //use buy button to get id and add the number to the cart
 $('.buy').on("click", function() {
 	id = $(this).attr('id');
@@ -45,10 +54,10 @@ for(var i = 0; i < cart.length; i++){
 cartElem.append('<li class="text-center"><button class="btn-default" id="checkout">Checkout</button></li>');
 }
 //clear cart
-function clear() {
-	localStorage.clear();
-	showCart();
-}
+//function clear() {
+	//localStorage.clear();
+	//showCart();
+//}
 //add item to cart in localstorage
 function addToCart(product) {
 	cart.push(product);
