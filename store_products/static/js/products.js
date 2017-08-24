@@ -10,19 +10,21 @@ $('.buy').on("click", function() {
 function showCart() {
 	if(localStorage.getItem("cart") !== null) {
 		cart = JSON.parse(localStorage.cart);
+		console.log(cart);
 	} else {
 		cart = [];
 	}
 	//use id in local storage to create and populate necessary elements
 var cartElem = $("#cart");
-cartElem.html = "";
-cartElem.append('<li class="text-center"><button class="btn-default" id="checkout">Checkout</button></li>');
+cartElem.html("");
 for(var i = 0; i < cart.length; i++){
 	var item = cart[i];
+	console.log(item);
 	var product =$('<li />').attr('id', "li"+item);
+	product.appendTo(cartElem);
 	var spitem = $('<span />').addClass('item');
 	spitem.appendTo(product);
-	var spitemleft = $('<span />').addclass('item-left');
+	var spitemleft = $('<span />').addClass('item-left');
 	spitemleft.appendTo(spitem);
 	img_url = $('#img'+ item).attr('src');
 	var img = $("<img />").attr('src', img_url)
@@ -34,10 +36,13 @@ for(var i = 0; i < cart.length; i++){
 	name.appendTo(spitemcenter);
 	var number = $('#price'+item).text();
 	var price = $('<span />').addClass('price').text(number);
-	var spitemright = $('span />').addClass('item-right');
+	price.appendTo(spitemcenter);
+	var spitemright = $('<span />').addClass('item-right');
 	spitemright.appendTo(spitem)
-	var deletebtn = $('<button />').addClass("btn btn-xs btn-danger pull-right").data('item', item);
+	var deletebtn = $('<button />').addClass("btn btn-xs btn-danger pull-right").data('item', item).text('x');
 	deletebtn.appendTo(spitemright);
+}
+cartElem.append('<li class="text-center"><button class="btn-default" id="checkout">Checkout</button></li>');
 }
 //clear cart
 function clear() {
@@ -52,12 +57,18 @@ function addToCart(product) {
 }
 
 //event listener for delete buttons
-$('.btn-danger').on('click', function(){
+$('.btn-danger').on('click', function() {
+	console.log('hey');
 	var select = $(this).data('item');
+	console.log(select);
 	var index = cart.indexOf(select);
 	if (index > -1) {
     cart = cart.splice(index, 1);
-}
-	localStorage.removeItem()
+    localStorage.removeItem('cart');
 	$('#li'+select).remove();
+	localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+});
+
 });
